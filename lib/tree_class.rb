@@ -35,9 +35,9 @@ class BinaryTree
         return nil if current_node.nil?
 
         if current_node.data>value
-            current_node.left = delete(value,current_node.left)
+            current_node.left=delete(value,current_node.left)
         elsif current_node.data<value
-            current_node.right = delete(value,current_node.right)
+            current_node.right=delete(value,current_node.right)
         else
             if current_node.left.nil?
                 return current_node.right
@@ -46,11 +46,11 @@ class BinaryTree
             if current_node.right.nil?
                 return current_node.left
             end
-        succ=succesor(current_node.right)
-        current_node.data = succ.data
-        current_node.right = delete(succ.data,current_node.right)
-        end
 
+            next_smallest=succesor(current_node.right)
+            current_node.data=next_smallest.data
+            current_node.right=delete(next_smallest.data,current_node.right)
+        end
         return current_node
 
 
@@ -62,6 +62,28 @@ class BinaryTree
         end
 
         return current_node
+    end
+
+    def find_value(value,current_node=@tree,counter=0)
+
+        return nil if current_node.data.nil?
+        
+        if current_node.data == value 
+            return true
+        else
+            return nil
+        end
+
+        return nil if current_node.nil?
+
+        if value<current_node.data
+            current_node.left = find_value(value,current_node.left)
+        elsif value>current_node.data
+            current_node.right = find_value(value,current_node.right)
+        end
+
+        return current_node
+
     end
 
     def pretty_print(node = @tree, prefix = '', is_left = true)
