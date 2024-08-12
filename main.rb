@@ -1,31 +1,78 @@
 require "./lib/tree_class"
 
 tree = BinaryTree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-tree.insert(69)
+
+puts "The initial tree build"
+puts
 tree.pretty_print
+
+tree.insert(69)
+tree.insert(73)
+
+puts
+puts
+puts
+
+puts "The build after insertion"
+puts
+tree.pretty_print
+
+puts
+puts
+puts
 
 tree.delete(8)
-puts
-puts
+
+puts "The build after deletion"
 puts
 tree.pretty_print
 
-if tree.find_value(69)
-  puts "the valus is in the tree"
+puts
+
+if tree.find(69)
+  puts "este in arbore"
 else
-  puts "the value is not in the tree"
+  puts "nu este in arbore"
 end
 
-if tree.find_value(342_342)
-  puts "the valus is in the tree"
+if tree.find(12_313)
+  puts "este in arbore"
 else
-  puts "the value is not in the tree"
+  puts "nu este in arbore"
 end
+puts
+puts
+puts "The build for inorder traversal"
+tree.inorder
 
-puts tree.level_order
+puts
+puts
+puts
 
-puts tree.preorder.join(' ')
+puts "The build for preorder traversal"
+tree.preorder
 
-puts tree.inorder.join(' ')
+puts
+puts
+puts
 
-puts tree.postorder.join(' ')
+puts "The build for postorder traversal"
+tree.postorder
+
+puts
+puts
+puts
+
+puts "The height of the node"
+print tree.height(tree.find(9)) - 1
+
+puts
+puts
+puts
+
+puts "The depth of the node"
+print tree.depth(73)
+
+puts
+puts
+puts
