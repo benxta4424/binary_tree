@@ -1,9 +1,8 @@
 require './lib/node'
 class BinaryTree
-
+    attr_accessor :root
     def initialize(array)
         @root=build_tree(array.uniq.sort)
-        @counter=0
     end
     
     def build_tree(array)
@@ -74,12 +73,14 @@ class BinaryTree
         end
     end
 
-    def inorder(current_root=@root)
-        return nil if current_root.nil?
+    def inorder(current_root=root,results=[])
+        return results if current_root.nil?
 
-        inorder(current_root.left)
-        print current_root.data.to_s+' '
-        inorder(current_root.right)
+        inorder(current_root.left,results)
+        results<<current_root.data
+        inorder(current_root.right,results)
+
+        results
 
     end
 
@@ -137,6 +138,23 @@ class BinaryTree
         end
 
         puts result
+    end
+
+    def balanced?(current_root=@root)
+        lefts=current_root.left
+        rights=current_root.right
+
+        if height(lefts)>=height(rights)+2
+            puts "The tree is unbalanced on the left sub-tree of root brev!"
+        elsif height(lefts)+2<=height(rights)
+            puts "The tree is unbalanced on the right sub-tree of root brev!"
+        end
+    end
+
+    def rebalance(current_root=@root)
+        @root=build_tree(inorder)
+        
+        pretty_print
     end
 
     def pretty_print(node = @root, prefix = '', is_left = true)

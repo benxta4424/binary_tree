@@ -8,6 +8,8 @@ tree.pretty_print
 
 tree.insert(69)
 tree.insert(73)
+tree.insert(74)
+tree.insert(75)
 
 puts
 puts
@@ -43,7 +45,7 @@ end
 puts
 puts
 puts "The build for inorder traversal"
-tree.inorder
+puts tree.inorder.join(' ')
 
 puts
 puts
@@ -71,8 +73,16 @@ puts
 puts
 
 puts "The depth of the node"
-print tree.depth(73)
+print tree.depth(5)
 
 puts
 puts
 puts
+
+tree.balanced?
+
+puts
+puts
+puts
+
+tree.rebalance
