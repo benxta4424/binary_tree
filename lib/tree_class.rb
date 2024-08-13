@@ -148,6 +148,8 @@ class BinaryTree
             puts "The tree is unbalanced on the left sub-tree of root brev!"
         elsif height(lefts)+2<=height(rights)
             puts "The tree is unbalanced on the right sub-tree of root brev!"
+        elsif height(lefts)<=height(rights)+1 || height(lefts)+1>=height(rights)
+            puts 'The tree is perfectly balanced!'
         end
     end
 

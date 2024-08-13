@@ -86,3 +86,10 @@ puts
 puts
 
 tree.rebalance
+
+
+
+puts
+puts
+puts
+tree.balanced?
